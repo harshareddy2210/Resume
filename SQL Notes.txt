@@ -1,0 +1,225 @@
+*************************** SQL **************************************
+** SQL Commands and Statements **
+
+1. SELECT Statement
+This SQL statement reads the data from the SQL database and shows it as the output to the database user.
+
+SELECT column_name1, column_name2, .…, column_nameN  
+    [ FROM table_name ]  
+    [ WHERE condition ]  
+    [ ORDER BY order_column_name1 [ ASC | DESC ], .... ];  
+
+2. UPDATE Statement - changes or modifies the stored data in the SQL database.
+
+UPDATE table_name  
+SET column_name1 = new_value_1, column_name2 = new_value_2, ...., column_nameN = new_value_N  
+[ WHERE  CONDITION ]; 
+
+3. DELETE Statement - deletes the stored data from the SQL database.
+
+DELETE FROM table_name  
+[ WHERE CONDITION ];  
+
+4. CREATE TABLE Statement - creates the new table in the SQL database.
+
+CREATE TABLE table_name  
+(  
+column_name1 data_type [column1 constraint(s)],  
+column_name2 data_type [column2 constraint(s)],  
+.....  
+.....,  
+column_nameN data_type [columnN constraint(s)],  
+PRIMARY KEY(one or more col)  
+);  
+
+5. ALTER TABLE Statement -- adds, deletes, and modifies the columns of the table in the SQL database.
+
+ALTER TABLE table_name ADD column_name datatype[(size)]; 
+ALTER TABLE table_name MODIFY column_name column_datatype[(size)]; 
+ALTER TABLE table_name DROP COLUMN column_name; 
+
+6.DROP TABLE Statement -- deletes or removes the table and the structure, views, permissions, and triggers associated with that table.
+
+DROP TABLE [ IF EXISTS ]  
+table_name1, table_name2, ……, table_nameN;  
+
+7. CREATE DATABASE Statement -- creates the new database in the database management system.
+
+CREATE DATABASE database_name; 
+
+8. DROP DATABASE Statement -- deletes the existing database with all the data tables and views from the database management system.
+
+DROP DATABASE database_name; 
+
+9. INSERT INTO Statement -- inserts the data or records in the existing table of the SQL database.
+
+INSERT INTO table_name  
+(   
+column_name1,   
+column_name2, .…,   
+column_nameN  
+)  
+VALUES   
+(value_1,   
+value_2, ..…,   
+value_N  
+);  
+
+10. TRUNCATE TABLE Statement -- statement deletes all the stored records from the table of the SQL database.
+
+TRUNCATE TABLE table_name;
+
+11. DESCRIBE Statement -- statement tells something about the specified table or view in the query.
+
+DESCRIBE table_name | view_name;
+
+12. DISTINCT Clause -  shows the distinct values from the specified columns of the database table. 
+ -- This statement is used with the SELECT keyword.
+
+13. COMMIT Statement -- statement saves the changes permanently, which are done in the transaction of the SQL database.
+
+DELETE FROM Employee_details  
+WHERE salary = 30000;  
+COMMIT;  
+
+14. ROLLBACK Statement -- statement undo the transactions and operations which are not yet saved to the SQL database.
+
+DELETE FROM Employee_details  
+WHERE City = Mumbai;  
+ROLLBACK;
+
+15. CREATE INDEX Statement -- creates the new index in the SQL database table.
+
+CREATE INDEX index_name  
+ON table_name ( column_name1, column_name2, …, column_nameN );
+
+16. DROP INDEX Statement -- deletes the existing index of the SQL database table.
+
+DROP INDEX index_name;   
+
+17. USE Statement -- selects the existing SQL database. Before performing the operations on the database table
+
+USE database_name;  
+
+
+*** DDL Commands -- Data Definition Language -- chnages the Structure of the table 
+
+1. Create 
+2. alter 
+3. Drop -- both Structure and remove the data 
+4. Truncate 
+5. Rename -- ALTER TABLE <OLD_TABLENAME> Rename to <NEW_TABLENAME>;  
+
+DML Commands - Data Manuplation Language -- used to modify the database. It is responsible for all form of changes in the database.
+
+1. Insert 
+2. Update 
+3. Delete
+4. Select 
+
+*** Data Control Language -- grant and take back authority from any database user.
+
+1. Grant -- GRANT SELECT, UPDATE ON MY_TABLE TO SOME_USER, ANOTHER_USER;  
+
+2. Revoke -- It is used to take back permissions from the user.
+
+REVOKE SELECT, UPDATE ON MY_TABLE FROM USER1, USER2; 
+
+*** Transaction Control Language **** 
+
+-- Transactions are atomic i.e. either every statement succeeds or none of statement succeeds.
+
+-- TCL commands can only use with DML commands like INSERT, DELETE and UPDATE only.
+
+1.Commit 
+
+2. Rollback 
+
+***** SQL CLAUSES ***** 
+
+-- etrieve a set or bundles of records from the table.
+
+1. WHERE CLAUSE 
+-- WHERE clause in SQL is used with the SELECT query, which is one of the data manipulation language commands.
+-- WHERE clauses can be used to limit the number of rows to be displayed in the result set
+
+SELECT * FROM TABLENAME WHERE CONDITION;  
+
+
+2. GROUP BY CLAUSE -  used to arrange similar kinds of records into the groups in the Structured Query Language.
+
+SELECT COUNT (E_ID) AS Number_of_Employees, Designation FROM employees GROUP BY Designation;  
+
+3. HAVING CLAUSE -- any conditions on the table's column, use the HAVING clause with the Group By clause for column conditions.
+
+TABLENAME GROUP BY COLUMNNAME HAVING CONDITION;
+
+4. ORDER BY CLAUSE - sort anything in SQL
+
+SELECT COLUMN_NAME1, COLUMN_NAME2 FROM TABLE_NAME ORDER BY COLUMN_NAME DESC;  
+
+**************** SQL Constraints *******************
+
+SQL constraints are used to specify rules for the data in a table.
+
+Constraints are used to limit the type of data that can go into a table.
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different -- but can hold the null values 
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table-- Cannot hold the Null values 
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+
+-- AUTO INCREMENT Field
+Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table.
+
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+
+*** SQL Date Data Types *** 
+
+DATE - format YYYY-MM-DD
+DATETIME - format: YYYY-MM-DD HH:MI:SS
+TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+YEAR - format YYYY or YY
+
+**** SQL CREATE VIEW Statement ****
+
+-- a view is a virtual table based on the result-set of an SQL statement.
+
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+*********** SQL JOIN *******************
+
+A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+
+1. (INNER) JOIN: Returns records that have matching values in both tables
+2. LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+3. RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+4. FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
+-- UNION operator is used to combine the result-set of two or more SELECT statements.
+-- UNION operator selects only distinct values by default. 
+
+SELECT City FROM Customers
+UNION
+SELECT City FROM Suppliers
+ORDER BY City;
+
+** To get all the duplicate values use union all 
+
+SELECT City FROM Customers
+UNION ALL
+SELECT City FROM Suppliers
+ORDER BY City;
